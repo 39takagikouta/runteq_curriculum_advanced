@@ -67,7 +67,6 @@ class Article < ApplicationRecord
   def build_body(controller)
     result = ''
 
-    binding.irb
     article_blocks.each do |article_block|
       result << if article_block.sentence?
                   sentence = article_block.blockable

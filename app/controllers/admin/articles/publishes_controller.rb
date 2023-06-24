@@ -9,9 +9,7 @@ class Admin::Articles::PublishesController < ApplicationController
 
     if @article.valid?
       Article.transaction do
-        binding.irb
         @article.body = @article.build_body(self)
-        binding.irb
         @article.save!
       end
 
