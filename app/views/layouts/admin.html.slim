@@ -123,6 +123,7 @@ html
 
       main.content-wrapper
         section.content-header
+          == breadcrumbs style: :ol, class: 'breadcrumb'
           h1
             = yield 'content-header'
 
