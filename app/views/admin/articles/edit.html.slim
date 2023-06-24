@@ -4,8 +4,6 @@
 = content_for 'content-header' do
   = @article.title
 
-- breadcrumb :edit_admin_article, @article
-
 .row
   .col-md-8
     = content_tag 'div', nil, class: 'js-article-block-forms', data: { 'article-uuid' => @article.uuid } do
