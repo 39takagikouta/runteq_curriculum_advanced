@@ -35,6 +35,17 @@ class Admin::ArticlesController < ApplicationController
     authorize(@article)
 
     if @article.update(article_params)
+    #修正した点
+    #1つめの要件
+    if published_or_wait?(@article) && @article.published_at > Time.now
+      @article.set_publish_wait_state
+      @article.save
+    end
+    #2つめの要件
+    if published_or_wait?(@article) && @article.published_at < Time.now
+      @article.set_published_state
+      @article.save
+    end
       flash[:notice] = '更新しました'
       redirect_to edit_admin_article_path(@article.uuid)
     else
@@ -64,5 +75,9 @@ class Admin::ArticlesController < ApplicationController
 
   def set_article
     @article = Article.find_by!(uuid: params[:uuid])
+  end
+
+  def published_or_wait?(article)
+    article.state == "published" || article.state == "publish_wait"
   end
 end

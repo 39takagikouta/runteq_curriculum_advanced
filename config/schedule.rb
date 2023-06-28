@@ -18,3 +18,8 @@
 # end
 
 # Learn more: http://github.com/javan/whenever
+
+
+every 1.hour do
+  rake 'articles_state:publish_wait_to_published'
+end

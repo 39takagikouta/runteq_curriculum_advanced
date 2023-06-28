@@ -2,21 +2,22 @@ ja:
   enums:
     user:
       role:
-        writer: 'ライター'
-        editor: '編集者'
-        admin: '管理者'
+        writer: "ライター"
+        editor: "編集者"
+        admin: "管理者"
     invitation:
       role:
-        writer: 'ライター'
-        editor: '編集者'
-        admin: '管理者'
+        writer: "ライター"
+        editor: "編集者"
+        admin: "管理者"
     article:
       state:
-        draft: '下書き'
-        published: '公開'
+        draft: "下書き"
+        published: "公開"
+        publish_wait: "公開待ち"
     medium:
       media_type:
-        image: '画像'
+        image: "画像"
     embed:
       embed_type:
-        youtube: 'YouTube'
+        youtube: "YouTube"
