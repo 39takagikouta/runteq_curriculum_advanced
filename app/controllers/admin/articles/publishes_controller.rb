@@ -5,9 +5,9 @@ class Admin::Articles::PublishesController < ApplicationController
 
   def update
     @article.published_at = Time.current unless @article.published_at?
-    if @article.published_at > Time.now
+    if @article.published_at > Time.zone.now
       @article.set_publish_wait_state
-    elsif @article.published_at < Time.now
+    else
       @article.set_published_state
     end
 
@@ -17,9 +17,9 @@ class Admin::Articles::PublishesController < ApplicationController
         @article.save!
       end
 
-      if @article.state == "publish_wait"
+      if @article.state == 'publish_wait'
         flash[:notice] = '公開待ちにしました'
-      elsif @article.state == "published"
+      elsif @article.state == 'published'
         flash[:notice] = '公開しました'
       end
 

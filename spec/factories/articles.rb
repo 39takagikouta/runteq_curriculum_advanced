@@ -38,12 +38,12 @@ FactoryBot.define do
   end
 
   trait :future do
-    published_at { DateTime.now.since(1.hours) }
+    published_at { DateTime.zone.now.since(1.hours) }
     state { :publish_wait }
   end
 
   trait :past do
-    published_at { DateTime.now.ago(1.hours) }
+    published_at { DateTime.zone.now.ago(1.hours) }
     state { :published }
   end
 end
