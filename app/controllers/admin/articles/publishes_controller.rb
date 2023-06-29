@@ -5,11 +5,7 @@ class Admin::Articles::PublishesController < ApplicationController
 
   def update
     @article.published_at = Time.current unless @article.published_at?
-    if @article.published_at > Time.zone.now
-      @article.set_publish_wait_state
-    else
-      @article.set_published_state
-    end
+    @article.state = @article.publishable? ? :published : :publish_wait
 
     if @article.valid?
       Article.transaction do

@@ -98,4 +98,8 @@ class Article < ApplicationRecord
   def set_publish_wait_state
     self.state = :publish_wait
   end
+
+  def publishable?
+    Time.current >= published_at
+  end
 end
