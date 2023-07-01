@@ -13,9 +13,9 @@
             => f.select :category_id, Category.pluck(:name, :id) , { include_blank: 'カテゴリ' }, class: 'form-control'
             => f.select :author_id, Author.pluck(:name, :id) , { include_blank: '著者' }, class: 'form-control'
             => f.select :tag_id, Tag.pluck(:name, :id) , { include_blank: 'タグ' }, class: 'form-control'
-            = f.search_field :body, class: 'form-control', placeholder: '記事内容'
+            => f.search_field :body, class: 'form-control', placeholder: '記事内容'
             .input-group
-              = f.search_field :title, class: 'form-control', placeholder: 'タイトル'
+              = f.search_field :title, placeholder: 'タイトル', class: 'form-control'
               span.input-group-btn
                 = f.submit '検索', class: %w[btn btn-default btn-flat]
         - if policy(Article).new?
