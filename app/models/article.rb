@@ -65,9 +65,8 @@ class Article < ApplicationRecord
   scope :title_contain, ->(word) { where('title LIKE ?', "%#{word}%") }
   scope :past_published, -> { where('published_at <= ?', Time.current) }
   scope :by_author, ->(author_id) { where(author_id: author_id) }
-  scope :by_tag, -> (tag_id) { joins(:article_tags).where(article_tags: { tag_id: tag_id }) }
+  scope :by_tag, ->(tag_id) { joins(:article_tags).where(article_tags: { tag_id: tag_id }) }
   scope :body_contain, ->(word) { joins(:sentences).where('sentences.body LIKE ?', "%#{word}%") }
-  
 
   def build_body(controller)
     result = ''
@@ -111,10 +110,10 @@ class Article < ApplicationRecord
   def adjust_state
     return if draft?
 
-    self.state =if publishable?
-                  :published
-                else
-                  :publish_wait
-                end
+    self.state = if publishable?
+                   :published
+                 else
+                   :publish_wait
+                 end
   end
 end
