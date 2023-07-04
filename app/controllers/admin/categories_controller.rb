@@ -57,4 +57,5 @@ class Admin::CategoriesController < ApplicationController
 
   def set_categories
     @categories = Category.all.order(:slug)
+  end
 end
