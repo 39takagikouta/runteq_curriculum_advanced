@@ -33,6 +33,7 @@ class Admin::ArticlesController < ApplicationController
 
   def update
     authorize(@article)
+    binding.pry
 
     @article.assign_attributes(article_params)
     @article.adjust_state
