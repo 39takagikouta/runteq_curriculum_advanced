@@ -32,20 +32,8 @@
             = image_tag @article.eye_catch_url(:thumb), class: 'img-thumbnail'
             br
             br 
-            = f.hidden_field :eyecatch_align
-            
-          span.radio.radio.radio
-            = f.label :eyecatch_align, "左寄せ", value: "left", class: 'radio'
-            = f.radio_button :eyecatch_align, "left", class: 'enum_radio_buttons optional'
-          span.radio.radio.radio
-            = f.label :eyecatch_align, "中央", value: "center", class: 'radio' do
-            = f.radio_button :eyecatch_align, "center", class: 'enum_radio_buttons optional'
-          span.radio.radio.radio
-            = f.label :eyecatch_align, "右寄せ", value: "right", class: 'radio' do
-            = f.radio_button :eyecatch_align, "right", class: 'enum_radio_buttons optional'
-          .div.form-group.integer.optional.article_eyecatch_width
-            = f.label :eyecatch_width, class: 'control-label integer optional'
-            = f.number_field :eyecatch_width, placeholder: '100', step: 1, class: 'form-control numeric integer optional'
+          = f.input_field :eyecatch_align, as: :radio_buttons
+          = f.input :eyecatch_width, placeholder: '100'
           = f.input :description, input_html: { class: 'js-autosize' }
           = f.input :author_id, as: :select2, collection: Author.pluck(:name, :id)
           = f.input :category_id, as: :select2, collection: Category.pluck(:name, :id)
