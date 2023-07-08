@@ -1,7 +1,4 @@
-ruby:
-  embed = local_assigns[:embed]
-  
+script async="" charset="utf-8" src="https://platform.twitter.com/widgets.js"
 .embed-twitter
   blockquote.twitter-tweet
-    = link_to '', embed.identifier
-  = javascript_include_tag 'https://platform.twitter.com/widgets.js', async: true, charset: 'utf-8'
+    a href="#{embed.identifier}"
