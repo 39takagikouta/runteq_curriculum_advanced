@@ -10,12 +10,9 @@ class Admin::SitesController < ApplicationController
   def update
     authorize(@site)
 
-    binding.pry
     if @site.update(site_params)
-      binding.pry
       redirect_to edit_admin_site_path
     else
-      binding.pry
       render :edit
     end
   end

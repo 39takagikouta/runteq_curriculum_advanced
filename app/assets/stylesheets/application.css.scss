@@ -1,3 +1,4 @@
+@import "swiper/swiper-bundle";
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -14,7 +15,7 @@
  */
 
 .jumbotron {
-  background: url('/images/cover.jpg') center / cover;
+  background: url("/images/cover.jpg") center / cover;
   color: white;
 
   a {
@@ -36,7 +37,9 @@
   margin: 1rem 0;
 }
 
-.category, .tags, .author {
+.category,
+.tags,
+.author {
   margin-top: 20px;
 }
 
@@ -75,5 +78,29 @@
     right: 0;
     width: 100% !important;
     height: 100% !important;
+  }
+}
+
+header {
+  position: relative;
+
+  .swiper-container {
+    img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+    }
+  }
+
+  .blog-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    z-index: 10;
+    a {
+      color: white;
+    }
   }
 }
