@@ -10,9 +10,12 @@ class Admin::SitesController < ApplicationController
   def update
     authorize(@site)
 
+    binding.pry
     if @site.update(site_params)
+      binding.pry
       redirect_to edit_admin_site_path
     else
+      binding.pry
       render :edit
     end
   end
@@ -20,7 +23,7 @@ class Admin::SitesController < ApplicationController
   private
 
   def site_params
-    params.require(:site).permit(:name, :subtitle, :description, :favicon, :og_image)
+    params.require(:site).permit(:name, :subtitle, :description, :favicon, :og_image, main_images: [])
   end
 
   def set_site
